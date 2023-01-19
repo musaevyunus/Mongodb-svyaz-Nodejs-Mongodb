@@ -12,7 +12,7 @@ module.exports.studentsController = {
   },
 
   deleteStudent: (req, res) => {
-    Student.findByIdAndRemove().then(() => {
+    Student.findByIdAndRemove(req.params.id).then(() => {
       res.json("Студент удален");
     });
   },
@@ -23,7 +23,7 @@ module.exports.studentsController = {
   },
 
   patchStudent: (req, res) => {
-    Student.findByIdAndUpdate().then(() => {
+    Student.findByIdAndUpdate(req.params.id, {name: req.body.name}).then(() => {
       res.json("Студент изменен");
     });
   },
